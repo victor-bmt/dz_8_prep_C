@@ -1,0 +1,33 @@
+Purpose
+
+Boost.Iostreams has three aims:
+
+    To make it easy to create standard C++ streams and stream buffers for accessing new Sources and Sinks.
+    To provide a framework for defining Filters and attaching them to standard streams and stream buffers.
+    To provide a collection of ready-to-use Filters, Sources and Sinks.
+
+For example, Boost.Iostreams can be used to create streams to access TCP connections or as a framework for cryptography and data compression. The library includes components for accessing memory-mapped files, for file access using operating system file descriptors, for code conversion, for text filtering with regular expressions, for line-ending conversion and for compression and decompression in the zlib, gzip and bzip2 formats.
+Overview
+
+At the heart of Boost.Iostreams are a collection of concepts and set of templates which turn models of these concepts into C++ standard library streams and stream buffers.
+Concepts
+
+The fundamental building blocks of the library are the concepts of a Source, which provides read access to a sequence of characters, a Sink, which provides write access to a sequence of characters, an InputFilter, which filters input read from a Source, and an OutputFilter, which filters output written to a Sink. Sources, Sinks and their refinements are called Devices. InputFilters, OutputFilters and their refinements are called Filters.
+Generic Streams and Stream Buffers
+
+The class templates stream_buffer and stream implement standard stream buffers and streams which perform i/o by delegating to a contained Device. The Device is accessed using member functions open, is_open and close, providing an interface similar to the standard file-based streams and stream buffers.
+Filtering Streams and Stream Buffers
+
+For filtering, Boost.Iostreams provides the templates filtering_streambuf and filtering_stream. Instances of filtering_streambuf or filtering_stream contain chains of Filters and Devices accessed with an interface similar to that of std::stack.
+How to Read the Iostreams Documentation
+
+If you haven't used a pre-release version of the library, start by reading the Tutorial. Read the entire section on writing Devices, and at least the first few sections on writing Filters. Even if you've used the library before, you might want to check out the Tutorial, since the library interface has been modified to accommodate Asynchronous and Non-Blocking I/O.
+
+Next, take a glance at the Quick Reference to get an overview of Boost.Iostream's major components.
+
+Finally, consult the User's Guide, the Reference and the FAQ when you have questions not answered by the other sections. The User's Guide consists of a collection of short essays, which are mostly independent of each other. The Reference contains detailed documentation of each public component of Boost.Iostreams.
+Conventions
+
+All classes, functions and templates introduced in the documentation are in the namespace boost::iostreams, unless otherwise indicated. Namespace qualification is usually omitted.
+
+Specializations of std::basic_istream will be referred to as standard input streams, specializations of std::basic_ostream as standard output streams, specializations of std::basic_iostream as standard i/o streams, and specializations of std::basic_streambuf as standard stream buffers. Together, standard input streams, standard output streams and standard i/o streams will be referred to as standard streams. Sometimes the qualifier standard will be omitted. 
